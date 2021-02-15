@@ -17,4 +17,8 @@ export class CharactersComponent implements OnInit {
       this.characters = response.results;
     });
   }
+
+  goToCharacterDetail(character: ICharacter): void {
+    console.log(character);
+  }
 }
