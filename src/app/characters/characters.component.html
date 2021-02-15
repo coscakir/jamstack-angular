@@ -3,7 +3,7 @@
   <div class="bg-white mx-auto shadow-lg rounded-lg overflow-hidden">
     <div class="sm:flex sm:items-center px-2 py-4">
       <div class="flex-grow">
-        <div class="width-full">
+        <div *ngIf="!loading; else loadingBlock" class="width-full">
           <div *ngFor="let character of characters" (click)="goToCharacterDetail(character)"
             class="flex cursor-pointer my-1 px-3 py-2 hover:bg-blue-100 rounded">
             <div class="w-4/5">
@@ -20,3 +20,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #loadingBlock>
+  <p class="px-3 py-2">Loading ...</p>
+</ng-template>
