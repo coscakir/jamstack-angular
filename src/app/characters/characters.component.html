@@ -1,1 +1,12 @@
-<p>characters works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let character of characters">
+      <td>{{ character.name }}</td>
+    </tr>
+  </tbody>
+</table>
