@@ -15,7 +15,7 @@ export class SwapiService {
     return this.http.get<ICharacters>(url);
   }
 
-  character(id: string): Observable<ICharacter> {
+  character(id: string | null): Observable<ICharacter> {
     const url = `${environment.apiUrl}/people/${id}/`;
     return this.http.get<ICharacter>(url);
   }
