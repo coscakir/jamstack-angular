@@ -4,7 +4,7 @@
     <div class="sm:flex sm:items-center px-2 py-4">
       <div class="flex-grow">
         <div *ngIf="!loading; else loadingBlock" class="width-full">
-          <div *ngFor="let character of characters" (click)="goToCharacterDetail(character)"
+          <a *ngFor="let character of characters" routerLink="/characters/{{character.url.split('people/')[1]}}"
             class="flex cursor-pointer my-1 px-3 py-2 hover:bg-blue-100 rounded">
             <div class="w-4/5">
               <p class="hover:text-blue-dark p-0 m-0">{{ character.name }}</p>
@@ -14,7 +14,7 @@
                 Learn more
               </p>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>

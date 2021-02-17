@@ -27,9 +27,4 @@ export class CharactersComponent implements OnInit {
         this.loading = false;
       });
   }
-
-  goToCharacterDetail(character: ICharacter): void {
-    const characterId = character.url.split('people/')[1];
-    this.router.navigate([`/characters/${characterId}`]);
-  }
 }
