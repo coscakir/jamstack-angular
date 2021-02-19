@@ -1,0 +1,11 @@
+{
+  "locale": "tr",
+  "translations": {
+    "home": "Ana Sayfa",
+    "characters": "Karakterler",
+    "about": "Hakkinda",
+    "learnMore": "Detaylar",
+    "welcome": "Hosgeldiniz!",
+    "selectLanguage": "Dil seciniz"
+  }
+}

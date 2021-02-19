@@ -20,7 +20,7 @@
         },
         "locales": {
           "tr": {
-            "translation": "src/assets/i18n/messages.tr.xlf",
+            "translation": "src/assets/i18n/messages.tr.json",
             "baseHref": "tr"
           }
         }

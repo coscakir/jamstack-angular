@@ -1,6 +1,11 @@
 {
   "locale": "en",
   "translations": {
-    "welcome": "Welcome!"
+    "home": "Home",
+    "characters": "Characters",
+    "about": "About",
+    "learnMore": " Learn more ",
+    "welcome": "Welcome!",
+    "selectLanguage": "Select Language"
   }
 }
