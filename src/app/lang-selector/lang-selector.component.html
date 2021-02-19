@@ -1,0 +1,6 @@
+<div>
+  <select name="languageSelect" id="languageSelect" #lanRef (change)="updateLocation(lanRef.value)">
+    <option value="_" disabled selected>Select Language</option>
+    <option *ngFor="let lang of languages" [value]="lang.code">{{ lang.label }}</option>
+  </select>
+</div>

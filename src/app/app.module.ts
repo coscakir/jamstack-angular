@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ScullyLibModule } from '@scullyio/ng-lib';
+import { LangSelectorComponent } from './lang-selector/lang-selector.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LangSelectorComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ScullyLibModule],
   providers: [],
   bootstrap: [AppComponent],

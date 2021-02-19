@@ -13,9 +13,22 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": {
+          "code": "en",
+          "baseHref": "/"
+        },
+        "locales": {
+          "tr": {
+            "translation": "src/assets/i18n/messages.tr.xlf",
+            "baseHref": "tr"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
+          "localize": true,
           "options": {
             "outputPath": "dist/jamstack-angular",
             "index": "src/index.html",
@@ -36,6 +49,11 @@
             }
           },
           "configurations": {
+            "tr": {
+              "localize": [
+                "tr"
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -71,6 +89,9 @@
             "browserTarget": "jamstack-angular:build"
           },
           "configurations": {
+            "tr": {
+              "browserTarget": "jamstack-angular:build:tr"
+            },
             "production": {
               "browserTarget": "jamstack-angular:build:production"
             }
