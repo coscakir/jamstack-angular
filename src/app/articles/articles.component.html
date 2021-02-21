@@ -1,0 +1,5 @@
+<article *ngFor="let article of articles" class="bg-white mx-auto shadow-lg rounded-lg overflow-hidden p-6 mb-3">
+  <h1 class="text-2xl font-bold">{{ article.name }}</h1>
+  <p>{{ article.content.excerpt }}</p>
+  <a [routerLink]="article.slug">Read more</a>
+</article>
