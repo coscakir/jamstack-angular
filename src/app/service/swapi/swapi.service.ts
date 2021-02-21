@@ -10,8 +10,8 @@ import { environment } from '../../../environments/environment';
 export class SwapiService {
   constructor(private http: HttpClient) {}
 
-  characters(): Observable<ICharacters> {
-    const url = `${environment.apiUrl}/people/`;
+  characters(pageNumber?: string): Observable<ICharacters> {
+    const url = `${environment.apiUrl}/people/?page=${pageNumber}`;
     return this.http.get<ICharacters>(url);
   }
 

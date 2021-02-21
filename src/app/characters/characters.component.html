@@ -1,23 +1,88 @@
 <h1 class="text-2xl font-bold mb-3" i18n="@@characters">Characters</h1>
-<div class="border-b border-grey-light bg-grey-lighter">
-  <div class="bg-white mx-auto shadow-lg rounded-lg overflow-hidden">
-    <div class="sm:flex sm:items-center px-2 py-4">
-      <div class="flex-grow">
-        <div *ngIf="!loading; else loadingBlock" class="width-full">
-          <a *ngFor="let character of characters" routerLink="/characters/{{character.url.split('people/')[1]}}"
-            class="flex cursor-pointer my-1 px-3 py-2 hover:bg-blue-100 rounded">
-            <div class="w-4/5">
-              <p class="hover:text-blue-dark p-0 m-0">{{ character.name }}</p>
-            </div>
-            <div class="w-1/5 text-right">
-              <p class="text-sm text-grey-dark p-0 m-0" i18n="@@learnMore">
-                Learn more
-              </p>
-            </div>
-          </a>
-        </div>
+
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Name
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Gender
+              </th>
+              <th scope="col"
+                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-right">
+                Detail
+              </th>
+            </tr>
+          </thead>
+          <tbody *ngIf="!loading; else loadingBlock" class="bg-white divide-y divide-gray-200">
+            <tr *ngFor="let character of characters.results">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full"
+                      src="/assets/images/characters/{{getCharacterId(character.url)}}.jpg" alt="">
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      {{ character.name }}
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      {{ character.birth_year }}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">{{ character.gender }}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <a routerLink="/characters/{{character.url.split('people/')[1]}}"
+                  class="text-indigo-600 hover:text-indigo-900" i18n="@@learnMore">Learn more</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="bg-white py-3 flex items-center justify-between border-t border-gray-200">
+  <div class="flex-1 flex items-center justify-between">
+    <button (click)="goToPreviousPage()"
+      class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500"
+      [ngClass]="!characters.previous ? 'disabled:opacity-50' : ''" [disabled]="!characters.previous">
+      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+        aria-hidden="true">
+        <path fill-rule="evenodd"
+          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd" />
+      </svg>
+      Previous
+    </button>
+    <div>
+      <p class="text-sm text-gray-700">
+        Total
+        <span class="font-medium">{{characters.count}}</span>
+        entries
+      </p>
+    </div>
+    <button (click)="goToNextPage()" [ngClass]="!characters.next ? 'disabled:opacity-50' : ''"
+      [disabled]="!characters.next"
+      class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500">
+      Next
+      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+        aria-hidden="true">
+        <path fill-rule="evenodd"
+          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+          clip-rule="evenodd" />
+      </svg>
+    </button>
   </div>
 </div>
 

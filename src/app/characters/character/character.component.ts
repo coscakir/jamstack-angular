@@ -28,4 +28,16 @@ export class CharacterComponent implements OnInit {
       .pipe(take(1))
       .subscribe((response) => (this.character = response));
   }
+
+  getFilmId(film: string): string {
+    return film.split('films/')[1].replace('/', '');
+  }
+
+  getStarshipId(starship: string): string {
+    return starship.split('starships/')[1].replace('/', '');
+  }
+
+  getVehicleId(vehicle: string): string {
+    return vehicle.split('vehicles/')[1].replace('/', '');
+  }
 }

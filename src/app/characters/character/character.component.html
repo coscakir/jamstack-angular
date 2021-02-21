@@ -1,10 +1,9 @@
 <div class="w-full lg:flex" *ngIf="character">
-  <div
-    class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+  <div class="flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
     <img src="/assets/images/characters/{{characterId}}.jpg" [alt]="character.name" />
   </div>
   <div
-    class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+    class="w-full border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
     <div class="mb-8">
       <div class="text-black font-bold text-xl mb-2">
         {{ character.name }}
@@ -15,6 +14,36 @@
       <p class="text-grey-darker text-base">Skin Color: {{ character.skin_color }}</p>
       <p class="text-grey-darker text-base">Mass: {{ character.mass }}</p>
       <p class="text-grey-darker text-base">Height: {{ character.height }}</p>
+
+      <div *ngIf="character.films.length > 0" class="my-4">
+        <p class="text-grey-darker text-base">Films</p>
+        <div class="flex -space-x-2 items-center overflow-hidden mt-2">
+          <a *ngFor="let film of character.films" routerLink="/films/{{getFilmId(film)}}">
+            <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+              src="/assets/images/films/{{getFilmId(film)}}.jpg" alt="Movie">
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="character.starships.length > 0" class="my-4">
+        <p class="text-grey-darker text-base">Starships</p>
+        <div class="flex -space-x-2 items-center overflow-hidden mt-2">
+          <a *ngFor="let starship of character.starships" routerLink="/starships/{{getStarshipId(starship)}}">
+            <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+              src="/assets/images/starships/{{getStarshipId(starship)}}.jpg" alt="Starship">
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="character.vehicles.length > 0" class="my-4">
+        <p class="text-grey-darker text-base">Vehicles</p>
+        <div class="flex -space-x-2 items-center overflow-hidden mt-2">
+          <a *ngFor="let vehicle of character.vehicles" routerLink="/vehicles/{{getVehicleId(vehicle)}}">
+            <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+              src="/assets/images/vehicles/{{getVehicleId(vehicle)}}.jpg" alt="Vehicle">
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
