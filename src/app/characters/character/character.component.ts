@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap, take } from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
+import { concatMap, switchMap, take, takeUntil } from 'rxjs/operators';
 import { ICharacter } from 'src/app/service/swapi/swapi.interface';
 import { SwapiService } from 'src/app/service/swapi/swapi.service';
 @Component({

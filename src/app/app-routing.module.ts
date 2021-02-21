@@ -12,6 +12,21 @@ const routes: Routes = [
       import('./characters/characters.module').then((m) => m.CharactersModule),
   },
   {
+    path: 'starships',
+    loadChildren: () =>
+      import('./starships/starships.module').then((m) => m.StarshipsModule),
+  },
+  {
+    path: 'vehicles',
+    loadChildren: () =>
+      import('./vehicles/vehicles.module').then((m) => m.VehiclesModule),
+  },
+  {
+    path: 'films',
+    loadChildren: () =>
+      import('./films/films.module').then((m) => m.FilmsModule),
+  },
+  {
     path: 'about',
     loadChildren: () =>
       import('./about/about.module').then((m) => m.AboutModule),
