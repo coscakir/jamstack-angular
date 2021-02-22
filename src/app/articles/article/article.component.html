@@ -1,6 +1,6 @@
 <div *ngIf="article.name">
   <h1 class="text-2xl font-bold mb-3">{{ article.name }}</h1>
-  <span class="font-light text-gray-600">{{ article.created_at | date }} | {{ article.content.author }}</span>
+  <span class="font-light text-gray-600">{{ article.created_at | date }} | {{ article.content.authorName }}</span>
 
   <p class="mt-6 text-gray-600">
     {{ article.content.body }}

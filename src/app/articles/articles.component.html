@@ -21,10 +21,10 @@
           </a>
           <div>
             <a href="#" class="flex items-center">
-              <img src="/assets/images/no-image.jpg" alt="avatar"
+              <img [src]="article.content.authorImage" [alt]="article.content.authorName"
                 class="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block" />
               <span class="text-gray-700 font-bold hover:underline">
-                {{ article.content.author }}
+                {{ article.content.authorName }}
               </span>
             </a>
           </div>

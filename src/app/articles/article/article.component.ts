@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, LOCALE_ID, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StoryblokService } from 'src/app/service/storyblok/storyblok.service';
 
@@ -10,7 +10,8 @@ import { StoryblokService } from 'src/app/service/storyblok/storyblok.service';
 export class ArticleComponent implements OnInit {
   constructor(
     private storyblokService: StoryblokService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    @Inject(LOCALE_ID) public locale: string
   ) {}
 
   article: any = {};
@@ -21,11 +22,24 @@ export class ArticleComponent implements OnInit {
   }
 
   async getArticle(): Promise<any> {
-    this.article = await this.storyblokService.getStory(
-      `articles/${this.slug}`,
+    const startsWith = this.locale.includes('en')
+      ? 'articles'
+      : `${this.locale}/articles`;
+    const article = await this.storyblokService.getStory(
+      `${startsWith}/${this.slug}`,
       {
         version: 'draft',
       }
     );
+
+    const author = await this.storyblokService.getStories({
+      starts_with: 'authors',
+      version: 'draft',
+      by_uuids: article.content.author,
+    });
+
+    article.content.authorName = author[0].name;
+
+    this.article = article;
   }
 }
