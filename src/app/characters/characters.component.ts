@@ -12,13 +12,14 @@ export class CharactersComponent implements OnInit {
   constructor(private swapiService: SwapiService, private router: Router) {}
 
   characters: ICharacters = {} as ICharacters;
-  loading = true;
+  loading = false;
 
   ngOnInit(): void {
     this.getCharacters();
   }
 
   getCharacters(pageNumber?: string): void {
+    this.loading = true;
     this.swapiService
       .characters(pageNumber || '')
       .pipe(take(1))

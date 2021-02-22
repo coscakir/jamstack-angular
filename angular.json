@@ -21,15 +21,18 @@
         "locales": {
           "tr": {
             "translation": "src/assets/i18n/messages.tr.json",
-            "baseHref": "tr"
+            "baseHref": "/"
           }
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
-          "localize": true,
           "options": {
+            "allowedCommonJsDependencies": [
+              "axios",
+              "qs"
+            ],
             "outputPath": "dist/jamstack-angular",
             "index": "src/index.html",
             "main": "src/main.ts",

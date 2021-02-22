@@ -9,7 +9,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "scully": "scully",
-    "scully:serve": "scully serve"
+    "scully:serve": "scully serve",
+    "scully:en": "export LOCALE=en && npm run scully",
+    "scully:tr": "export LOCALE=tr && npm run scully",
+    "static": "ng build --prod --localize && npm run scully:en && npm run scully:tr"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +27,7 @@
     "@scullyio/init": "^1.0.1",
     "@scullyio/ng-lib": "^1.0.0",
     "@scullyio/scully": "^1.0.0",
+    "@scullyio/scully-plugin-base-href-rewrite": "^1.1.0",
     "axios": "^0.21.1",
     "rxjs": "~6.6.0",
     "storyblok-js-client": "^3.3.1",

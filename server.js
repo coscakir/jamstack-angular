@@ -6,7 +6,7 @@ const path = require("path");
 
 const app = express();
 const port = 8687;
-const buildLocation = "dist/static";
+const buildLocation = `dist/static/`;
 
 app.use(compression());
 app.use(express.static(buildLocation));
