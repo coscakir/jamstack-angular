@@ -59,4 +59,7 @@ export const config: ScullyConfig = {
       type: 'getAllCharacters',
     },
   },
+  puppeteerLaunchOptions: {
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  },
 };
