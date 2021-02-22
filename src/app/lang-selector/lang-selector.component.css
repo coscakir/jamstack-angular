@@ -1,12 +1,5 @@
-div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 select {
   appearance: none;
   background: none;
-  padding: 3px 5px;
-  color: rgb(156, 163, 175);
+  cursor: pointer;
 }

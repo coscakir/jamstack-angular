@@ -15,10 +15,9 @@ export class ArticlesComponent implements OnInit {
   }
 
   async getArticles(): Promise<any> {
-    const data = await this.storyblokService.getStories({
+    this.articles = await this.storyblokService.getStories({
       version: 'draft',
       starts_with: 'articles',
     });
-    this.articles = data.stories;
   }
 }
