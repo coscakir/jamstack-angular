@@ -1,6 +1,12 @@
-import { httpGetJson, registerPlugin, ScullyConfig } from '@scullyio/scully';
+import {
+  httpGetJson,
+  registerPlugin,
+  ScullyConfig,
+  setPluginConfig,
+} from '@scullyio/scully';
 import { ICharacters } from 'src/app/service/swapi/swapi.interface';
 const StoryblokClient = require('storyblok-js-client');
+import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 
 const Storyblok = new StoryblokClient({
   accessToken: 'eFk8U1I9dapiX4AJep6Xwgtt',
@@ -46,7 +52,16 @@ registerPlugin('render', 'fixStaticLinks', fixStaticLinksPlugin);
 registerPlugin('router', 'getArticles', getStories);
 registerPlugin('router', 'getAllCharacters', getAllCharacters);
 
+const defaultPostRenderers = [
+  baseHrefRewrite,
+  'seoHrefOptimise',
+  'fixStaticLinks',
+];
+
+setPluginConfig(baseHrefRewrite, { href: `/${process.env.LOCALE}/` });
+
 export const config: ScullyConfig = {
+  defaultPostRenderers,
   projectRoot: './src',
   projectName: 'jamstack-angular',
   outDir: `./dist/static/${process.env.LOCALE}`,
