@@ -43,12 +43,14 @@ function getStories(): Promise<any> {
 }
 
 const fixStaticLinksPlugin = async (html: any) => {
-  const regex = new RegExp('(<a[^>]* href="/)([^"]*)"', 'gmi');
-  html = html.replace(regex, `$1${process.env.LOCALE}/$2"`);
+  const regexForAElement = new RegExp('(<a[^>]* href="/)([^"]*)"', 'gmi');
+  const regexForImgElement = new RegExp('(<img[^>]* src="/)([^"]*)"', 'gmi');
+  html = html.replace(regexForAElement, `$1${process.env.LOCALE}/$2"`);
+  html = html.replace(regexForImgElement, `$1${process.env.LOCALE}/$2"`);
   return Promise.resolve(html);
 };
 
-registerPlugin('router', 'fixStaticLinks', fixStaticLinksPlugin);
+registerPlugin('render', 'fixStaticLinks', fixStaticLinksPlugin);
 registerPlugin('router', 'getArticles', getStories);
 registerPlugin('router', 'getAllCharacters', getAllCharacters);
 
