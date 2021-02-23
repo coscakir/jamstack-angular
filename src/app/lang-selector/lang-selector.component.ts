@@ -24,6 +24,6 @@ export class LangSelectorComponent implements OnInit {
   }
 
   updateLocation(value: string): void {
-    window.location.replace(`/${window.location.origin}/${value}`);
+    window.location.replace(`${window.location.origin}/${value}`);
   }
 }

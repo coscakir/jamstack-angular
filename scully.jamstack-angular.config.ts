@@ -48,7 +48,7 @@ const fixStaticLinksPlugin = async (html: any) => {
   return Promise.resolve(html);
 };
 
-registerPlugin('render', 'fixStaticLinks', fixStaticLinksPlugin);
+registerPlugin('router', 'fixStaticLinks', fixStaticLinksPlugin);
 registerPlugin('router', 'getArticles', getStories);
 registerPlugin('router', 'getAllCharacters', getAllCharacters);
 
